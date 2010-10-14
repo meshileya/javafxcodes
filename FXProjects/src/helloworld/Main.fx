@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package helloworld;
+package helloworld; 
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
