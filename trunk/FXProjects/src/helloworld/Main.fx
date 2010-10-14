@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 
 /**
- * @author spunja
+ * @author shourien
  */
 
 Stage {
