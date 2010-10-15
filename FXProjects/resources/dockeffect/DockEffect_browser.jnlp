@@ -13,7 +13,7 @@
         <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.3/javafx-rt.jnlp"/>
         <jar href="DockEffect.jar" main="true" size="477329"/>
     </resources>
-    <applet-desc name="DockEffect" main-class="com.sun.javafx.runtime.adapter.Applet" progress-class="com.javafx.progressbar.ProgressManager" width="200" height="200">
+    <applet-desc name="DockEffect" main-class="com.sun.javafx.runtime.adapter.Applet" progress-class="com.javafx.progressbar.ProgressManager" width="400" height="400">
         <param name="MainJavaFXScript" value="dockeffect.Main"/>
     </applet-desc>
     <update check="always"/>
