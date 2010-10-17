@@ -149,10 +149,10 @@ var groupitems:Group = Group{
         ]
         onMouseDragged: function(e: MouseEvent): Void {
             println("text");
-            imagenodetemp.x = e.x;
-            textnodetemp.x = e.x;
-            imagenodetemp.y = e.y;
-            textnodetemp.y = e.y;
+            imagenodetemp.x = e.x - 20;
+            textnodetemp.x = e.x + 40;
+            imagenodetemp.y = e.y - 155;
+            textnodetemp.y = e.y - 80;
         }
         onMouseReleased: function(e: MouseEvent): Void {
                 imagenodetemp.x = Xvalue;
