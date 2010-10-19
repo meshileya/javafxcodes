@@ -18,7 +18,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Panel;
 
 /**
- * @author Rakesh Menon
+ * @author Shourien
  */
 public class Window extends CustomNode {
 
@@ -29,10 +29,7 @@ public class Window extends CustomNode {
     public var y = 0.0;
     public var width = 180.0;
     public var height = 180.0;
-    public var minWidth = 180.0;
-    public var minHeight = 180.0;
     public var temp = 1;
-    public-init var autoResize = false;
     def margin = 5;
     def arcSize = 8;
     def windowVisible = bind visible on replace {
@@ -62,7 +59,6 @@ public class Window extends CustomNode {
                 arcHeight: arcSize
 
                 onMousePressed: function(e) {
-                    println(title);
                     toFront();
                 }
 
@@ -75,7 +71,6 @@ public class Window extends CustomNode {
                 arcHeight: arcSize
 
                 onMousePressed: function(e) {
-                    println(title);
                     toFront();
                 }
                 effect: DropShadow {}
@@ -85,7 +80,6 @@ public class Window extends CustomNode {
                 fill: Color.WHITE
                 blocksMouse: true
                 onMousePressed: function(e) {
-                    println(title);
                     toFront();
                 }
             }
@@ -96,7 +90,6 @@ public class Window extends CustomNode {
                 content: [
                     bgRect, titleRect, contentAreaBG, titleText, contentGroup,
                 ]
-                blocksMouse: true
             }
 
     override function create(): Node {
