@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://javafxcodes.googlecode.com/svn/trunk/FXProjects/resources/imagepopup/" href="ImagePopUp.jnlp">
+    <information>
+        <title>ImagePopUp</title>
+        <vendor>Shourien</vendor>
+        <homepage href="http://javafxcodes.googlecode.com/svn/trunk/FXProjects/resources/imagepopup/"/>
+        <description>ImagePopUp</description>
+        <icon kind="splash" href="http://dl.javafx.com/1.3/splash.png"/>
+        <offline-allowed/>
+    </information>
+    <resources>
+        <j2se version="1.5+"/>
+        <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.3/javafx-rt.jnlp"/>
+        <jar href="ImagePopUp.jar" main="true" size="135787"/>
+    </resources>
+    <application-desc main-class="com.sun.javafx.runtime.main.Main" progress-class="com.javafx.progressbar.ProgressManager">
+        <argument>MainJavaFXScript=imagepopup.Main</argument>
+    </application-desc>
+    <update check="always"/>
+</jnlp>
