@@ -13,7 +13,7 @@
         <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.3/javafx-rt.jnlp"/>
         <jar href="ImagePopUp.jar" main="true" size="135787"/>
     </resources>
-    <applet-desc name="ImagePopUp" main-class="com.sun.javafx.runtime.adapter.Applet" progress-class="com.javafx.progressbar.ProgressManager" width="500" height="400">
+    <applet-desc name="ImagePopUp" main-class="com.sun.javafx.runtime.adapter.Applet" progress-class="com.javafx.progressbar.ProgressManager" width="800" height="350">
         <param name="MainJavaFXScript" value="imagepopup.Main"/>
     </applet-desc>
     <update check="always"/>
