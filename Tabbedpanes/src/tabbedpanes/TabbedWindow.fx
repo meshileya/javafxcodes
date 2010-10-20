@@ -23,8 +23,9 @@ import javafx.util.Math;
  * @author Shourien
  */
  var titleNode: Node[];
+ var textNode: Node[];
  var totaltitlewidth:Number;
- var initialposition:Number;
+ var initialposition:Integer;
  var nodetextinitialXposition:Number;
  var noderectinitialXposition:Number;
 public class TabbedWindow extends CustomNode {
@@ -84,7 +85,7 @@ public class TabbedWindow extends CustomNode {
                 }
             }
             PointerText.layoutX = 100 * Math.floor((e.sceneX -x)/100);
-            initialposition = PointerText.layoutX/100;
+            initialposition = (PointerText.layoutX/100 as Integer);
             nodetextinitialXposition = titleText.layoutX;
             noderectinitialXposition = titleRect.layoutX;
             toFront();
@@ -102,12 +103,64 @@ public class TabbedWindow extends CustomNode {
             if(initialposition == PointerText.layoutX/100){
                 titleRect.layoutX = noderectinitialXposition;
                 titleText.layoutX = nodetextinitialXposition;
-            } else {
-                //more coding here
+            } else if(initialposition < PointerText.layoutX/100){
+                var nodefinalposition = PointerText.layoutX/100 as Integer;
+                var temptitlenode:Number = 0;
+                var temptextnode:Number = 0;
+                var elsetitlenode:Number = 0;
+                var elsetextnode:Number = 0;
+                var rectNodes:Node[] = null;
+                var textNodes:Node[] = null;
+                var preload:Integer = 0;
+                while(preload < initialposition){
+                    insert titleNode[preload] into rectNodes;
+                    insert textNode[preload] into textNodes;
+                    preload++;
+                }
+
+                for(i in [initialposition..nodefinalposition]) {
+                    if(i == initialposition) {
+                        temptitlenode = (titleNode[i+1] as Rectangle).layoutX;
+                        temptextnode = (textNode[i+1] as Text).layoutX;
+                        (titleNode[i+1] as Rectangle).layoutX = noderectinitialXposition;
+                        (textNode[i+1] as Text).layoutX = nodetextinitialXposition;
+                        insert titleNode[i+1] into rectNodes;
+                        insert textNode[i+1] into textNodes;
+                    } else if(i == nodefinalposition) {
+                        (titleNode[initialposition] as Rectangle).layoutX = temptitlenode;
+                        (textNode[initialposition] as Text).layoutX = temptextnode;
+                        insert titleNode[initialposition] into rectNodes;
+                        insert textNode[initialposition] into textNodes;
+                    } else {
+                        elsetitlenode = temptitlenode;
+                        elsetextnode = temptextnode;
+                        temptitlenode = (titleNode[i+1] as Rectangle).layoutX;
+                        temptextnode = (textNode[i+1] as Text).layoutX;
+                        (titleNode[i+1] as Rectangle).layoutX = elsetitlenode;
+                        (textNode[i+1] as Text).layoutX = elsetextnode;
+                        insert titleNode[i+1] into rectNodes;
+                        insert textNode[i+1] into textNodes;
+                    }
+                }
+                nodefinalposition++;
+                preload = titleNode.size() - 1;
+                while(nodefinalposition <= preload){
+                    insert titleNode[nodefinalposition] into rectNodes;
+                    insert textNode[nodefinalposition] into textNodes;
+                    nodefinalposition++;
+                }
+                nodefinalposition = 0;
+                preload = 0;
+                delete titleNode;
+                delete textNode;
+                titleNode = rectNodes;
+                textNode = textNodes;
             }
+
             PointerText.visible = false;
             noderectinitialXposition = 0;
             nodetextinitialXposition= 0;
+            initialposition = 0;
         }
 
         effect: DropShadow {}
@@ -123,8 +176,8 @@ public class TabbedWindow extends CustomNode {
                 layoutY: bind y
                 onLayout: onLayout
                 content: [
-                    bgRect, titleRect, contentAreaBG, titleText, background, contentGroup,PointerText
-                ]
+                    bgRect, titleRect, contentAreaBG, titleText, background, 
+                    contentGroup,PointerText]
             }
 
     override function create(): Node {
@@ -141,6 +194,7 @@ public class TabbedWindow extends CustomNode {
         background.layoutX = margin + 2;
         background.layoutY = margin - 2;
         insert titleRect into titleNode;
+        insert titleText into textNode;
         contentClipRect.width = width - 4;
         contentClipRect.height = height - 12;
         titleRect.width = titleText.layoutBounds.width + margin + 3;
