@@ -2,67 +2,43 @@ package tabbedpanes;
 
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
 * @author Shourien
 */
 
-var dialog1 = Window {
-title: "Tabbed-Pane1"
-content: [
-    Rectangle {
-    x: 20
-    y: 20
-    width: 90
-    height: 90
-    fill: Color.RED }
-    ]
-    visible: true;
-    temp: 1;
+var dialog1 = TabbedWindow {
+    title: "Tabbed-Pane1"
+    content: []
+    background: ImageView {
+        image: Image {url:"{__DIR__}background.jpg"};
+    }
 }
 
-var dialog2:Window = Window {
-title: "Tabbed-Pane2"
-content: [
-    Rectangle {
-    x: 20
-    y: 20
-    width: 90
-    height: 90
-    fill: Color.BLACK }
-    ]
-    visible: true;
-    temp: 2;
+var dialog2:TabbedWindow = TabbedWindow {
+    title: "Tabbed-Pane2"
+    content: []
+    background: ImageView {
+        image: Image {url:"{__DIR__}background1.jpg"};
+    }
 }
 
-var dialog3:Window = Window {
-title: "Tabbed-Pane3"
-content: [
-    Rectangle {
-    x: 20
-    y: 20
-    width: 90
-    height: 90
-    fill: Color.BLACK }
-    ]
-    visible: true;
-    temp: 2;
+var dialog3:TabbedWindow = TabbedWindow {
+    title: "Tabbed-Pane3"
+    content: []
+    background: ImageView {
+        image: Image {url:"{__DIR__}background2.jpg"};
+    }
 }
 
-var dialog4:Window = Window {
-title: "Tabbed-Pane4"
-content: [
-    Rectangle {
-    x: 20
-    y: 20
-    width: 90
-    height: 90
-    fill: Color.BLACK }
-    ]
-    visible: true;
-    temp: 2;
+var dialog4:TabbedWindow = TabbedWindow {
+    title: "Tabbed-Pane4"
+    content: []
+    background: ImageView {
+        image: Image {url:"{__DIR__}background3.jpg"};
+    }
 }
 
 Stage { 
