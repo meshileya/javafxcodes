@@ -5,7 +5,9 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-/**  * @author Shourien  */
+/**
+* @author Shourien
+*/
 
 var dialog1 = Window {
 title: "Tabbed-Pane1"
