@@ -20,69 +20,68 @@ import javafx.scene.layout.Panel;
 /**
  * @author Shourien
  */
+ var titleNode: Node[];
+ var totaltitlewidth:Number;
 public class Window extends CustomNode {
 
     public var content: Node[];
     public-init var fill: Paint = Color.GRAY;
     public var title = "";
-    public var x = 0.0;
-    public var y = 0.0;
-    public var width = 180.0;
-    public var height = 180.0;
+    public var x = 20.0;
+    public var y = 50.0;
+    public var width = 400.0;
+    public var height = 400.0;
     public var temp = 1;
     def margin = 5;
     def arcSize = 8;
-    def windowVisible = bind visible on replace {
-                if (visible) {
-                println(title);
-                toFront();}
-            }
 
     def titleText: Text = Text {
-                content: bind title
-                font: Font.font("sansserif", FontWeight.BOLD, 12)
-                fill: Color.BLACK
-                textOrigin: TextOrigin.TOP
-            }
+        content: bind title
+        font: Font.font("sansserif", FontWeight.BOLD, 12)
+        fill: Color.BLACK
+        textOrigin: TextOrigin.TOP
+    }
+
     def contentClipRect = Rectangle {
-                x: 2
-                y: 2
-            }
+        x: 2
+        y: 2
+    }
+
     def contentGroup = Group {
-                content: bind content
-                clip: contentClipRect
-            }
+        content: bind content
+        clip: contentClipRect
+    }
 
     def bgRect: Rectangle = Rectangle {
-                fill: fill
-                arcWidth: arcSize
-                arcHeight: arcSize
-
-                onMousePressed: function(e) {
-                    toFront();
-                }
-
-                effect: DropShadow {}
-            }
+        fill: fill
+        arcWidth: arcSize
+        arcHeight: arcSize
+        effect: DropShadow {}
+    }
 
      def titleRect: Rectangle = Rectangle {
-                fill: fill
-                arcWidth: arcSize
-                arcHeight: arcSize
+        fill: fill
+        arcWidth: arcSize
+        arcHeight: arcSize
 
-                onMousePressed: function(e) {
-                    toFront();
+        onMousePressed: function(e) {
+            for(i in [0..titleNode.size()]){
+                if(titleRect!=titleNode[i]) {
+                    (titleNode[i] as Rectangle).fill = Color.GREY;
+                } else {
+                    (titleNode[i] as Rectangle).fill = Color.WHITE;
                 }
-                effect: DropShadow {}
             }
+            toFront();
+        }
+        effect: DropShadow {}
+    }
 
     def contentAreaBG = Rectangle {
                 fill: Color.WHITE
                 blocksMouse: true
-                onMousePressed: function(e) {
-                    toFront();
-                }
             }
+            
     def window = Panel {
                 layoutX: bind x
                 layoutY: bind y
@@ -97,26 +96,23 @@ public class Window extends CustomNode {
     }
 
     function onLayout(): Void {
+        insert titleRect into titleNode;
         contentClipRect.width = width - 4;
         contentClipRect.height = height - 12;
-
         titleRect.width = titleText.layoutBounds.width + margin + 3;
-        titleRect.height = titleText.layoutBounds.height + margin + 3;
+        titleRect.height = titleText.layoutBounds.height + margin + 8;
         titleRect.layoutY = - titleRect.height;
-
-        if(temp == 1){
-            titleRect.fill = Color.WHITE;
+        titleText.layoutY = -margin * 4;
+        
+        titleRect.fill = Color.GREY;
+        if(titleNode.size() == 1){
             titleRect.layoutX = margin + 1;
             titleText.layoutX = margin + 3;
-            titleText.layoutY = -margin*4;
-            temp++;
         } else {
-            titleRect.fill = Color.GREY;
-            titleText.layoutX = titleText.layoutBounds.width + margin + 7;
-            titleRect.layoutX = titleText.layoutBounds.width + margin + 3;
-            titleText.layoutY = -margin*4;
+            totaltitlewidth += titleRect.width;
+            titleText.layoutX = totaltitlewidth + 12;
+            titleRect.layoutX = totaltitlewidth + 6;
         }
-
         contentGroup.layoutY = margin;
         contentGroup.layoutX = margin;
 
