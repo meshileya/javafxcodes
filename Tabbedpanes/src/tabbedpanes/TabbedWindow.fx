@@ -19,6 +19,7 @@ import javafx.scene.layout.Panel;
 import javafx.scene.image.ImageView;
 import javafx.util.Math;
 import javafx.scene.Cursor;
+import javafx.scene.image.Image;
 
 /**
  * @author Shourien
@@ -51,8 +52,8 @@ public class TabbedWindow extends CustomNode {
         wrappingWidth: 91;
     }
 
-    def PointerText: Text = Text {
-        content: ">";
+    var PointerText: ImageView = ImageView{
+        image: Image {url:"{__DIR__}arrow.gif"};
         layoutY: -margin * 6;
     }
 
