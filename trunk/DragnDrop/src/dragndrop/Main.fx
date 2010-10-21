@@ -24,6 +24,7 @@ import javafx.animation.transition.ScaleTransition;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import javafx.scene.Cursor;
 
 /**
  * @author spunja
@@ -89,6 +90,7 @@ function cloneNodes(yvalue: Number, xvalue: Number){
         onMousePressed: function(e: MouseEvent): Void {
             imagenodetemp = imagezone;
             textnodetemp = textzone;
+            imagenodetemp.cursor = Cursor.HAND;
             panel1 = false;
             if(e.sceneX <= 400){
                 panel1 = true;
@@ -242,9 +244,11 @@ var groupitems:Group = Group{
             imagenodetemp.y = e.y - 20;
             textnodetemp.x = e.x;
             textnodetemp.y = e.y + 65;
+            imagenodetemp.cursor = Cursor.HAND;
         }
         
         onMouseReleased: function(e: MouseEvent): Void {
+            imagenodetemp.cursor = Cursor.DEFAULT;
             if (e.sceneX >= 400 and panel1) {
                 delete imagenodetemp from charsdone;
                 delete textnodetemp from charsdone;
