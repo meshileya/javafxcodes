@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://javafxcodes.googlecode.com/svn/trunk/FXProjects/resources/dragndrop/" href="DragnDrop_browser.jnlp">
+    <information>
+        <title>DragnDrop</title>
+        <vendor>Shourien</vendor>
+        <homepage href="http://javafxcodes.googlecode.com/svn/trunk/FXProjects/resources/dragndrop/"/>
+        <description>DragnDrop</description>
+        <icon kind="splash" href="http://dl.javafx.com/1.3/splash.png"/>
+        <offline-allowed/>
+    </information>
+    <resources>
+        <j2se version="1.5+"/>
+        <extension name="JavaFX Runtime" href="http://dl.javafx.com/1.3/javafx-rt.jnlp"/>
+        <jar href="DragnDrop.jar" main="true" size="678517"/>
+    </resources>
+    <applet-desc name="DragnDrop" main-class="com.sun.javafx.runtime.adapter.Applet" progress-class="com.javafx.progressbar.ProgressManager" width="500" height="300">
+        <param name="MainJavaFXScript" value="dragndrop.Main"/>
+    </applet-desc>
+    <update check="always"/>
+</jnlp>
