@@ -18,6 +18,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Panel;
 import javafx.scene.image.ImageView;
 import javafx.util.Math;
+import javafx.scene.Cursor;
 
 /**
  * @author Shourien
@@ -28,6 +29,7 @@ import javafx.util.Math;
  var initialposition:Integer;
  var nodetextinitialXposition:Number;
  var noderectinitialXposition:Number;
+
 public class TabbedWindow extends CustomNode {
 
     public var content: Node[];
@@ -75,6 +77,7 @@ public class TabbedWindow extends CustomNode {
         fill: fill
         arcWidth: arcSize
         arcHeight: arcSize
+        cursor: Cursor.HAND;
 
         onMousePressed: function(e) {
             for(i in [0..titleNode.size()]){
@@ -112,6 +115,7 @@ public class TabbedWindow extends CustomNode {
                 var rectNodes:Node[] = null;
                 var textNodes:Node[] = null;
                 var preload:Integer = 0;
+
                 while(preload < initialposition){
                     insert titleNode[preload] into rectNodes;
                     insert textNode[preload] into textNodes;
@@ -142,12 +146,59 @@ public class TabbedWindow extends CustomNode {
                         insert textNode[i+1] into textNodes;
                     }
                 }
+
                 nodefinalposition++;
                 preload = titleNode.size() - 1;
+
                 while(nodefinalposition <= preload){
                     insert titleNode[nodefinalposition] into rectNodes;
                     insert textNode[nodefinalposition] into textNodes;
                     nodefinalposition++;
+                }
+                
+                nodefinalposition = 0;
+                preload = 0;
+                delete titleNode;
+                delete textNode;
+                titleNode = rectNodes;
+                textNode = textNodes;
+
+            } else if(initialposition > PointerText.layoutX/100){
+                var nodefinalposition = PointerText.layoutX/100 as Integer;
+                var rectNodes:Node[] = null;
+                var textNodes:Node[] = null;
+                var preload:Integer = 0;
+
+                while(preload < nodefinalposition){
+                    insert titleNode[preload] into rectNodes;
+                    insert textNode[preload] into textNodes;
+                    preload++;
+                }
+
+                for(i in [nodefinalposition..initialposition]) {
+                    if(i == nodefinalposition) {
+			(titleNode[initialposition] as Rectangle).layoutX = (titleNode[nodefinalposition] as Rectangle).layoutX;
+			(textNode[initialposition] as Text).layoutX = (textNode[nodefinalposition] as Text).layoutX;
+                        insert titleNode[initialposition] into rectNodes;
+                        insert textNode[initialposition] into textNodes;
+                    } else if(i == initialposition) {
+                        (titleNode[i-1] as Rectangle).layoutX = noderectinitialXposition;
+                        (textNode[i-1] as Text).layoutX = nodetextinitialXposition;
+                        insert titleNode[i-1] into rectNodes;
+                        insert textNode[i-1] into textNodes;
+                    } else {
+			(titleNode[i-1] as Rectangle).layoutX = (titleNode[i] as Rectangle).layoutX;
+			(textNode[i-1] as Text).layoutX = (textNode[i] as Text).layoutX;
+                        insert titleNode[i-1] into rectNodes;
+                        insert textNode[i-1] into textNodes;
+                    }
+                }
+                initialposition++;
+                preload = titleNode.size() - 1;
+                while(initialposition <= preload){
+                    insert titleNode[initialposition] into rectNodes;
+                    insert textNode[initialposition] into textNodes;
+                    initialposition++;
                 }
                 nodefinalposition = 0;
                 preload = 0;
