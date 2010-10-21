@@ -206,8 +206,12 @@ public class TabbedWindow extends CustomNode {
                 delete textNode;
                 titleNode = rectNodes;
                 textNode = textNodes;
+            } else {
+                titleRect.layoutX = noderectinitialXposition;
+                titleText.layoutX = nodetextinitialXposition;
             }
-
+            noderectinitialXposition = 0;
+            nodetextinitialXposition = 0;
             PointerText.visible = false;
             noderectinitialXposition = 0;
             nodetextinitialXposition= 0;
