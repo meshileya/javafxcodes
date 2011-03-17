@@ -3,7 +3,7 @@
     <information>
         <title>ListView</title>
         <vendor>Shourien</vendor>
-        <homepage href="http://javafxcodes.googlecode.com/svn/trunk/FXProjects/resources/dockeffect/"/>
+        <homepage href="http://javafxcodes.googlecode.com/svn/trunk/FXProjects/resources/listview/"/>
         <description>ListView</description>
         <icon kind="splash" href="http://dl.javafx.com/1.3/splash.png"/>
         <offline-allowed/>
