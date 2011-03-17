@@ -18,7 +18,7 @@ import java.lang.InterruptedException;
 
 function run (): Void {
     Stage {
-        title: "Viwo Technologies"
+        title: "Splash Screen Demo"
         scene: DummyScene;
         resizable: false;
     }
